@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StudentStorage executor = new StudentStorage();
+        System.out.println(helpText);
         while (true) {
             String command = scanner.nextLine();
             String[] tokens = command.split("\\s+", 2);
@@ -20,7 +21,9 @@ public class Main {
             } else if (tokens[0].equals("list")) {
                 executor.listStudent();
             } else if (tokens[0].equals("get")) {
-                executor.getStudentByName(tokens[1]).toString();
+                if (tokens.length >= 2 && tokens[1] != null) {
+                    executor.getStudentByName(tokens[1]).toString();
+                }
             } else if (tokens[0].equals("remove")) {
                 executor.removeStudent(tokens[1]);
             } else if (tokens[0].equals("count")) {
